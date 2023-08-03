@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tomcat
+  name: tomcat
+  namespace: tomcat
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: tomcat
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - image: public.ecr.aws/i9j0a8l3/web:latest
+        name: tomcat
+        ports:
+          - containerPort: 8080
+      nodeSelector:
+        app: tomcat
