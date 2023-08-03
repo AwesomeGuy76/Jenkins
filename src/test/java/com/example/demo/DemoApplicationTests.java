@@ -15,7 +15,7 @@ class SbbApplicationTests {
     @Test
     void testJpa() {
         for (int i = 1; i <= 300; i++) {
-            String subject = String.format("테스트 데이터:[%03d]", i);
+            String subject = String.format("테스트 :[%03d]", i);
             String content = "내용무";
             this.questionService.create(subject, content);
         }
