@@ -65,6 +65,7 @@ pipeline {
                 sh "sed -i 's~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~' argo/tomcat.yaml"
                 sh 'git add argo/tomcat.yaml'
                 sh 'git commit -m "Update image in tomcat.yaml"'
+                sh 'whoami'
                 sh 'sudo su'
                 sh '"ssh -i ../../.ssh/argocd" git push origin main'
             }
