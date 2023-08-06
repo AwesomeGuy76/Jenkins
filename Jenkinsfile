@@ -1,17 +1,31 @@
 pipeline {
-	agent any
+    agent any
 
-	stage('Git Progress') {
-	  steps {
-		git branch: 'main',
-		credentialsId: 'b09432f5-5c15-491f-8213-ccd755902363',
-		url: 'git@github.com:AwesomeGuy76/Jenkins.git'
-	  }
-	}
-	
-	
-	stage('Gradle build') {
-		sh 'gradle clean build --exclude-task test'
-	}
+    tools {
+        gradle 'gradle8.2.1'
+        jdk 'jdk17'
+    }
 
+    stages {
+        stage('Git Progress') {
+            steps {
+                // Git 저장소에서 소스 코드를 체크아웃하는 단계입니다.
+                git branch: 'main',
+                credentialsId: 'b09432f5-5c15-491f-8213-ccd755902363',
+                url: 'git@github.com:AwesomeGuy76/Jenkins.git'
+            }
+        }
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh './gradlew clean build --exclude-task test'
+            }
+        }
+    }
 }
