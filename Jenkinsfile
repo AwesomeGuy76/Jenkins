@@ -1,4 +1,6 @@
-node {
+pipeline {
+	agent any
+
 	stage('Git Progress') {
 	  steps {
 		git branch: 'main',
@@ -6,12 +8,10 @@ node {
 		url: 'git@github.com:AwesomeGuy76/Jenkins.git'
 	  }
 	}
-
-
+	
+	
 	stage('Gradle build') {
 		sh 'gradle clean build --exclude-task test'
 	}
-	
-	
-	
+
 }
