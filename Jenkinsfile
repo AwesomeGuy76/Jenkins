@@ -30,7 +30,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'pwd'
+                sh 'cd /var/jenkins_home/workspace/OTT/build/lib'
                 sh 'echo "FROM openjdk:17-oracle" > dockerfile'
                 sh 'echo "RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime" >> dockerfile'
                 sh 'echo "COPY board-0.0.1-SNAPSHOT.jar app.jar" >> dockerfile'
