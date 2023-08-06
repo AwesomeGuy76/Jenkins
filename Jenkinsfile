@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Git Progress') {
+        stage('Jenkins Git Progress') {
             steps {
                 git branch: 'main',
                 credentialsId: 'b09432f5-5c15-491f-8213-ccd755902363',
@@ -38,10 +38,31 @@ pipeline {
                 sh 'echo "EXPOSE 8080" >> dockerfile'
 
                 sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i9j0a8l3'
-                sh 'docker build -t web .\n\
-                    dockertag=$(date +"%G%m%d%H%M%S%N")\n\
-                    docker tag web:latest public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER\n\
-                    docker push public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
+                sh 'docker build -t web .'
+                sh 'docker tag web:latest public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
+            }
+        }
+
+        stage('Image push to ECR') {
+            steps {
+                sh 'docker push public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
+            }
+        }
+
+         stage('ArgoCD Git Progress') {
+            steps {
+                git branch: 'main',
+                credentialsId: '07be79ee-2b6d-4f05-937e-7d3bd3012498',
+                url: 'git@github.com:AwesomeGuy76/ArgoCD.git'
+            }
+        }
+
+        stage('Update Menifest ArgoCD') {
+            steps {
+                sh "sed -i 's~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~' argocd/tomcat.yaml"
+                sh 'git add argocd/tomcat.yaml'
+                sh 'git commit -m "Update image in tomcat.yaml"'
+                sh 'git push origin main'
             }
         }
     }
