@@ -43,5 +43,11 @@ pipeline {
                 sh 'docker push public.ecr.aws/i9j0a8l3/web:$dockertag'
             }
         }
+
+        stage('test'){
+            steps {
+                sh 'echo $docker'
+            }
+        }
     }
 }
