@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build Docker Image and push to ECR') {
             steps {
                 sh 'echo "FROM openjdk:17-oracle" > dockerfile'
                 sh 'echo "RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime" >> dockerfile'
