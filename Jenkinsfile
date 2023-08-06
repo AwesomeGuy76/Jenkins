@@ -40,8 +40,8 @@ pipeline {
                 sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i9j0a8l3'
                 sh 'docker build -t web .\n\
                     dockertag=$(date +"%G%m%d%H%M%S%N")\n\
-                    docker tag web:latest public.ecr.aws/i9j0a8l3/web:$dockertag\n\
-                    docker push public.ecr.aws/i9j0a8l3/web:$dockertag'
+                    docker tag web:latest public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER\n\
+                    docker push public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
             }
         }
     }
