@@ -40,11 +40,6 @@ pipeline {
                 sh 'docker build -t web .'
                 sh 'dockertag=$(date +"%G%m%d%H%M%S%N")'
                 sh 'docker tag web:latest public.ecr.aws/i9j0a8l3/web:$dockertag'
-            }
-        }
-
-        stage('Push to ECR'){
-            steps {
                 sh 'docker push public.ecr.aws/i9j0a8l3/web:$dockertag'
             }
         }
