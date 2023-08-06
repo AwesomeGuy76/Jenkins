@@ -63,6 +63,7 @@ pipeline {
                 sh 'git config --global user.name "sjh7711"'
 
                 sh 'git remote -v'
+                sh 'git status'
                 sh "sed -i 's~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~' argo/tomcat.yaml"
                 sh 'git add argo/tomcat.yaml'
                 sh 'git commit -m "Update image in tomcat.yaml"'
