@@ -52,7 +52,7 @@ pipeline {
          stage('ArgoCD Git Progress') {
             steps {
                 git branch: 'main',
-                credentialsId: '07be79ee-2b6d-4f05-937e-7d3bd3012498',
+                credentialsId: '8578e23c-fee9-4ca4-9b04-ae2c3d2e121b',
                 url: 'git@github.com:AwesomeGuy76/ArgoCD.git'
             }
         }
