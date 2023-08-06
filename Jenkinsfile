@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-        stage('test'){
+        stage('test2'){
             steps {
                 sh 'echo $dockertag'
             }
