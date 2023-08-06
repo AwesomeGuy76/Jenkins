@@ -24,10 +24,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                withGradle(
-                    tasks: 'clean build',
-                    switches: '--exclude-task test'
-                )
+                sh './gradlew clean build --exclude-task test'
             }
         }
     }
