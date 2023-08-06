@@ -59,13 +59,15 @@ pipeline {
 
         stage('Update Menifest ArgoCD') {
             steps {
-                sh 'git config --global user.email "apfhd159862@naver.com"'
-                sh 'git config --global user.name "sjh7711"'
-                
-                sh "sed -i 's~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~' argo/tomcat.yaml"
-                sh 'git add argo/tomcat.yaml'
-                sh 'git commit -m "Update image in tomcat.yaml"'
-                sh 'ssh -i ../../.ssh/argocd git push origin main'
+                sshagent(credentials: ['sjh7711']){
+                    sh 'git config --global user.email "apfhd159862@naver.com"'
+                    sh 'git config --global user.name "sjh7711"'
+                    
+                    sh "sed -i 's~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~' argo/tomcat.yaml"
+                    sh 'git add argo/tomcat.yaml'
+                    sh 'git commit -m "Update image in tomcat.yaml"'
+                    sh 'git push origin main'
+                }
             }
         }
     }
