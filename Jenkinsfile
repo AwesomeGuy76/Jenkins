@@ -59,7 +59,7 @@ pipeline {
 
         stage('Update Menifest ArgoCD') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: '07be79ee-2b6d-4f05-937e-7d3bd3012498' keyFileVariable: 'argocd')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: '07be79ee-2b6d-4f05-937e-7d3bd3012498' keyFileVariable: 'key')]) {
                     sh 'git config --global user.email "apfhd159862@naver.com"'
                     sh 'git config --global user.name "sjh7711"'
                     
