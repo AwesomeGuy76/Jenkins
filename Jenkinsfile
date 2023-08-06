@@ -66,7 +66,7 @@ pipeline {
                 sh 'git add argo/tomcat.yaml'
                 sh 'git commit -m "Update image in tomcat.yaml"'
                 withCredentials([gitUsernamePassword(credentialsId: 'github-sjh', gitToolName: 'git-tool')]) {
-                  sh 'git push --set-upstream origin main'
+                  sh 'git push origin main'
                 }
             }
         }
