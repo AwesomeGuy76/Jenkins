@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ETEVERSVIDEO</title>
+
+    <!-- css link -->
+    <link rel="stylesheet" href="../css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+    />
+    <link rel="stylesheet" href ="css/owl.carousel.css">
+    <link rel ="stylesheet" href="css/oul.theme.default.css">
+
+    <!-- js link -->
+    <script defer src="../js/popup.js"></script>
+    <script defer src="../js/main.js"></script>
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+
+  </head>
+  <body>
+
+      <header class="header">
+        <h1 class="header__logo">
+          <a href="../main.html">
+            <img src="../image/head_logo.png" alt="에트버스로고" />
+          </a>
+        </h1>
+        <nav class="header__nav">
+          <ul>
+            <li id="userInfo">
+              <a href="#">
+                <i class="fas fa-user-alt"></i>
+              </a>
+            </li>
+            <li id="search">
+              <a href="#">
+                <i class="fas fa-search"></i>
+              </a>
+            </li>
+            <li id="logout">
+              <a href="../" class="logout-btn">
+                로그아웃
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <ul class="genre-list">
+          <li id="action"><a href="./genre.html?id=28">액션</a></li>
+          <li id="animation"><a href="./genre.html?id=16">애니메이션</a></li>
+          <li id="romance"><a href="./genre.html?id=10749">로맨스</a></li>
+          <li id="thriller"><a href="./genre.html?id=53">스릴러</a></li>
+          <li id="sf"><a href="./genre.html?id=878">SF</a></li>
+        </ul>
+      </header>
+      <br><br>
+      <div class="vid">
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/Y8JFxS1HlDo"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <br><br><br>
+      <div>
+        <h1 color="black">영상 목록</h1>
+      </div>
+      <!-- 슬라이드 추가ㅣ-->
+      <div class="embla">
+        <div class="embla__container" >
+          <div class="embla__slide" th:each = "board:${list}" >
+            <a th:href ="@{/board/view(id=${board.id})}" target="_self">
+              <img th:src="${board.VD_poster}" height="400px" width="500px"></a></div>
+        </div>
+      </div>
+
+      <button class="top-btn">맨 위로</button>
+
+
+
+
+    <!--케러셀-->
+    <script type="text/javascript">
+    var emblaNode = document.querySelector(".embla");
+    var options = { loop: false };
+    var embla = EmblaCarousel(emblaNode, options);
+  </script>
+
+  </body>
+</html>

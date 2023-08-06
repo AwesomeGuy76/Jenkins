@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ETEVERSVIDEO</title>
+
+  <!-- css link -->
+  <link rel="stylesheet" href="../css/main.css" />
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+  />
+  <link rel="stylesheet" href ="css/owl.carousel.css">
+  <link rel ="stylesheet" href="css/oul.theme.default.css">
+
+  <!-- js link -->
+  <script defer src="../js/popup.js"></script>
+  <script defer src="../js/main.js"></script>
+  <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+
+</head>
+<body>
+
+<header class="header">
+  <h1 class="header__logo">
+    <a href="../main.html">
+      <img src="../image/head_logo.png" alt="에트버스로고" />
+    </a>
+  </h1>
+  <nav class="header__nav">
+    <ul>
+      <li id="userInfo">
+        <a href="#">
+          <i class="fas fa-user-alt"></i>
+        </a>
+      </li>
+      <li id="search">
+        <a href="#">
+          <i class="fas fa-search"></i>
+        </a>
+      </li>
+      <li id="logout">
+        <a href="../" class="logout-btn">
+          로그아웃
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <ul class="genre-list">
+    <li id="action"><a href="./genre.html?id=28">액션</a></li>
+    <li id="animation"><a href="./genre.html?id=16">애니메이션</a></li>
+    <li id="romance"><a href="./genre.html?id=10749">로맨스</a></li>
+    <li id="thriller"><a href="./genre.html?id=53">스릴러</a></li>
+    <li id="sf"><a href="./genre.html?id=878">SF</a></li>
+  </ul>
+</header>
+<br>
+
+<table>
+  <tr>
+    <td>
+      <div class="vid" align="center">
+        <video autoplay controls loop muted poster="aaa" preload="bbb" width="80%" >
+          <source th:src="${board.VD_file}" type="video/mp4">
+        </video>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td margin-left="20px">
+      <div>
+        <h1 th:text="${board.VD_name}">Name</h1>
+        <ul>
+          <li >줄거리 : <span th:text="${board.VD_cum}"></span></li>
+          <li >장르 : <span th:text="${board.VD_cate}"></span></li>
+          <li >총 상영시간 : <span th:text="${board.VD_runtime}"></span>분</li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

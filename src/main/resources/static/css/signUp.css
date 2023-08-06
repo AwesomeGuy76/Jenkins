@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  font-size: 10px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.a11y-hidden,
+legend {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0);
+  /* IE 6,7 */
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.bg {
+  background-image: url(../image/signBG.jpg);
+  width: 100%;
+  z-index: 999;
+}
+
+.bgBlur::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: -1;
+}
+
+.logo-img {
+  width: 175px;
+  height: 55px;
+  filter: blur(0px);
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.signUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(9 7 7);
+  display: flex;
+  flex-direction: column;
+  padding: 60px 68px;
+  width: 450px;
+  border-radius: 15px;
+}
+
+.signUp>h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.signUp-input {
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  padding: 16px;
+  border-radius: 4px;
+  border: 0;
+  background: #333;
+  color: #ffffff;
+}
+
+.signUp-input:hover {
+  background-color: #646464;
+  caret-color: #ffffff;
+}
+
+.signUp-input::placeholder {
+  color: rgb(216, 216, 216);
+}
+
+.errorColor {
+  border: 3px solid #800000;
+}
+
+.correctColor {
+  border: 3px solid rgb(27, 102, 4);
+}
+
+.alert {
+  text-indent: 12px;
+  color: red;
+  font-size: 12px;
+}
+
+.signUp-bt {
+  display: inline-block;
+  width: 47%;
+  height: 45px;
+  font-size: 16px;
+  color: #ffffff;
+  background: #e50914;
+  border: 0;
+  border-radius: 4px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.signUp-bt:hover {
+  background: #ff4500;
+  text-decoration: underline;
+}
+
+.cancle-bt {
+  background-color: #444444;
+}
+
+.cancle-bt:hover {
+  background-color: #5e5e5e;
+}
+
+.preference {
+  margin: 16px auto 12px;
+  width: 100%;
+  /* 원하는 너비설정 */
+  padding: 12px;
+  /* 여백으로 높이 설정 */
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.bt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.guideMessage{
+  display: none;
+  margin-top: 15px;
+  text-indent: 12px;
+  color: red;
+  font-size: 12px;
+}
+.guideMessageActive{
+  display: block;
+}
