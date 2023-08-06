@@ -29,7 +29,7 @@ pipeline {
         }
 
 
-        stage('Build Docker Image and push to ECR') {
+        stage('Build Docker Image') {
             steps {
                 sh 'echo "FROM openjdk:17-oracle" > dockerfile'
                 sh 'echo "RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime" >> dockerfile'
@@ -59,8 +59,8 @@ pipeline {
 
         stage('Update Menifest ArgoCD') {
             steps {
-                sh "sed -i 's~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~' argocd/tomcat.yaml"
-                sh 'git add argocd/tomcat.yaml'
+                sh "sed -i 's~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~' argo/tomcat.yaml"
+                sh 'git add argo/tomcat.yaml'
                 sh 'git commit -m "Update image in tomcat.yaml"'
                 sh 'git push origin main'
             }
