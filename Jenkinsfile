@@ -28,6 +28,18 @@ pipeline {
             }
         }
 
+        stage('test'){
+            steps {
+                sh 'dockertag=$(date +"%G%m%d%H%M%S%N")'
+            }
+        }
+
+        stage('test'){
+            steps {
+                sh 'echo $dockertag'
+            }
+        }
+
         stage('Build Docker Image and push to ECR') {
             steps {
                 sh 'echo "FROM openjdk:17-oracle" > dockerfile'
@@ -38,7 +50,7 @@ pipeline {
 
                 sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i9j0a8l3'
                 sh 'docker build -t web .'
-                sh 'dockertag=$(date +"%G%m%d%H%M%S%N")'
+                
                 sh 'docker tag web:latest public.ecr.aws/i9j0a8l3/web:$dockertag'
                 sh 'docker push public.ecr.aws/i9j0a8l3/web:$dockertag'
             }
@@ -46,7 +58,8 @@ pipeline {
 
         stage('test'){
             steps {
-                sh 'echo $docker'
+                sh 'dockertag=$(date +"%G%m%d%H%M%S%N")'
+                sh 'echo $dockertag'
             }
         }
     }
