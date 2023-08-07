@@ -48,15 +48,7 @@ pipeline {
                 sh 'docker push public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
             }
         }
-
-         stage('ArgoCD Git Progress') {
-            steps {
-                git branch: 'main',
-                credentialsId: '07be79ee-2b6d-4f05-937e-7d3bd3012498',
-                url: 'git@github.com:AwesomeGuy76/ArgoCD.git'
-            }
-        }
-
+        
         stage('Update Menifest ArgoCD') {
             steps {
                 sh 'git config --global user.email "apfhd159862@naver.com"'
