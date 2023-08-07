@@ -39,4 +39,9 @@ public class BoardController {
         model.addAttribute("board", boardService.boardView(id));
         return "videoview";
     }
+
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/home";
+    }
 }
