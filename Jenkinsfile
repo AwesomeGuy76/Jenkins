@@ -57,7 +57,8 @@ pipeline {
                 withCredentials([gitUsernamePassword(credentialsId: 'github-sjh', gitToolName: 'Default')]) {
                     sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml\n\
                         git status\n\
-                        git commit -am "Update image in tomcat.yaml"\n\
+                        git add -A\n\
+                        git commit -m "Update image in tomcat.yaml"\n\
                         git status\n\
                         git push origin main'
                 }
