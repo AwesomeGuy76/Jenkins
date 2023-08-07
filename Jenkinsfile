@@ -62,6 +62,7 @@ pipeline {
                     sh 'git branch tmp'
                     sh 'git checkout main'
                     sh 'git merge tmp'
+                    sh 'git branch -d tmp'
                 }
             }
         }
