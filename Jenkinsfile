@@ -57,6 +57,9 @@ pipeline {
                 withCredentials([gitUsernamePassword(credentialsId: 'github-sjh', gitToolName: 'Default')]) {
                     sh 'pwd'
                     sh 'ls -al'
+                    sh 'git branch tmp'
+                    sh 'git checkout main'
+                    
                     sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml'
                     sh 'git status'
                     sh 'git add argo/tomcat.yaml'
@@ -65,6 +68,7 @@ pipeline {
                     sh 'git status'
                     sh 'git branch'
                     sh 'git push origin main'
+                    sh 'git merge tmp'
                 }
             }
         }
