@@ -66,7 +66,9 @@ pipeline {
                     sh 'git status'
                     sh 'git branch'
                     sh 'git status'
-                    sh 'git push origin main'
+                    sh 'git push origin tmp'
+                    sh 'git status'
+                    sh 'git merge tmp'
                 }
             }
         }
