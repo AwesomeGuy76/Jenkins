@@ -35,15 +35,15 @@ pipeline {
                 sh 'echo "COPY ./build/libs/board-0.0.1-SNAPSHOT.jar app.jar" >> dockerfile'
                 sh 'echo "ENTRYPOINT ["java","-jar","/app.jar"]" >> dockerfile'
                 sh 'echo "EXPOSE 8080" >> dockerfile'
-
-                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i9j0a8l3'
-                sh 'docker build -t web .'
-                sh 'docker tag web:latest public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
+                
+                sh 'docker build -t public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
             }
         }
 
         stage('Image push to ECR') {
             steps {
+                docker.withRegistry("https://public.ecr.aws/i9j0a8l3/reca1team-ecr", "ecr:ap-northeast-2:671d16ba-e688-4863-9690-12fa05b9b9d6") {
+                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i9j0a8l3'
                 sh 'docker push public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
             }
         }
