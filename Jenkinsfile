@@ -10,8 +10,7 @@ pipeline {
         stage('Jenkins Git Progress') {
             steps {
                 git branch: 'main',
-                credentialsId: 'b09432f5-5c15-491f-8213-ccd755902363',
-                url: 'git@github.com:AwesomeGuy76/Jenkins.git'
+                url: 'https://github.com/AwesomeGuy76/Jenkins.git'
             }
         }
 
