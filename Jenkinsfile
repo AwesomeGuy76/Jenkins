@@ -55,7 +55,7 @@ pipeline {
                 sh 'git config --global user.name "sjh7711"'
 
                 withCredentials([gitUsernamePassword(credentialsId: 'github-sjh', gitToolName: 'Default')]) {
-                    sh 'git checkout main'
+                    sh 'git checkout tmp'
                     sh 'git status'
                     
                     sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml'
