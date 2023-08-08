@@ -415,3 +415,7 @@ h3.popup__open__overviewTag {
     max-height: 60vh;
     object-fit: cover;
 }
+.back {
+    background-color: gray; /* 헤더 영역의 백그라운드 색상을 하얀색으로 변경 */
+    padding: 10px;
+}

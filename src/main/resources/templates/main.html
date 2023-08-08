@@ -24,7 +24,7 @@
 
       <header class="header">
         <h1 class="header__logo">
-          <a href="../main.html">
+          <a href="/home">
             <img src="../image/head_logo.png" alt="에트버스로고" />
           </a>
         </h1>
@@ -55,9 +55,13 @@
           <li id="sf"><a href="./genre.html?id=878">SF</a></li>
         </ul>
       </header>
+
       <br><br>
+      <div>
+        <h1>오늘의 추천 영화</h1>
+      </div>
       <div class="vid">
-        <iframe width="100%" height="450" src="https://www.youtube.com/embed/Y8JFxS1HlDo"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="450" src="https://reca1team-s3.s3.ap-northeast-2.amazonaws.com/video/%5B%EC%9D%B8%EC%8B%9C%EB%94%94%EC%96%B4%EC%8A%A4_+%EB%B9%A8%EA%B0%84+%EB%AC%B8%5D+%EB%A9%94%EC%9D%B8+%EC%98%88%EA%B3%A0%ED%8E%B8.mp4"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
 
       <br><br><br>
@@ -83,6 +87,25 @@
     var emblaNode = document.querySelector(".embla");
     var options = { loop: false };
     var embla = EmblaCarousel(emblaNode, options);
+      // 영상 URL 리스트
+      const videoUrls = [
+        "https://reca1team-s3.s3.ap-northeast-2.amazonaws.com/video/%EC%98%88%EA%B3%A0%ED%8E%B8%EB%A7%88%EC%A0%80+%EA%B0%93%EB%B2%BD%ED%95%9C+'%EC%8B%A0%EC%B9%B4%EC%9D%B4+%EB%A7%88%EC%BD%94%ED%86%A0'+%EA%B0%90%EB%8F%85+%EC%8B%A0%EC%9E%91+%5B%EC%8A%A4%EC%A6%88%EB%A9%94%EC%9D%98+%EB%AC%B8%EB%8B%A8%EC%86%8D%5D+%EB%91%90+%EB%B2%88%EC%A7%B8+%EC%98%88%EA%B3%A0%ED%8E%B8+%EB%8C%80%EA%B3%B5%EA%B0%9C!!!.mp4",
+        "https://reca1team-s3.s3.ap-northeast-2.amazonaws.com/video/y2mate.com+-+%ED%95%9C%EB%AC%B8%EC%B2%A0+%EB%B3%80%ED%98%B8%EC%82%AC%EB%8F%84+%ED%92%80%EC%95%85%EC%85%80+%EB%B0%9F%EA%B2%8C+%EB%A7%8C%EB%93%9C%EB%8A%94+%EB%85%B8%EB%9E%98++Deja+Vu++Dave+Rodgers++Initial+D_720p.mp4",
+        // 추가로 재생할 영상 URL을 이곳에 넣으세요.
+      ];
+
+      // 현재 재생중인 영상의 인덱스
+      let currentIndex = 0;
+
+      // 영상 재생 함수
+      function playNextVideo() {
+        currentIndex = (currentIndex + 1) % videoUrls.length;
+        const iframe = document.getElementById("movieIframe");
+        iframe.src = videoUrls[currentIndex];
+      }
+
+      // 1분마다 영상 변경
+      setInterval(playNextVideo, 1 * 60 * 1000); // 1분(60초)마다 영상 변경
   </script>
 
   </body>

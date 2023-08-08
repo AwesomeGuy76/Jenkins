@@ -28,7 +28,7 @@ public class BoardController {
          return "";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String boardList(Model model){
         model.addAttribute("list", boardService.boardList());
         return "main";
@@ -38,10 +38,5 @@ public class BoardController {
     public String boardView(Model model, Integer id){
         model.addAttribute("board", boardService.boardView(id));
         return "videoview";
-    }
-
-    @GetMapping("/")
-    public String root() {
-        return "redirect:/home";
     }
 }
