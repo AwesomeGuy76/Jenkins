@@ -30,6 +30,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
+                sh 'ls -al ./build/libs'
                 sh 'echo "FROM openjdk:17-oracle" > dockerfile'
                 sh 'echo "RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime" >> dockerfile'
                 sh 'echo "COPY ./build/libs/board-0.0.1-SNAPSHOT.jar /app.jar" >> dockerfile'
