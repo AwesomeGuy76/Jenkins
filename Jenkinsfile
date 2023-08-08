@@ -54,7 +54,7 @@ pipeline {
                 sh 'git config --global user.name "sjh7711"'
 
                 withCredentials([gitUsernamePassword(credentialsId: 'github-sjh', gitToolName: 'Default')]) {
-                    sh 'git checkout -b argocd'
+                    sh 'git checkout argocd'
                     
                     sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:[0-9]*~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml'
                     sh 'git add argo/tomcat.yaml'
