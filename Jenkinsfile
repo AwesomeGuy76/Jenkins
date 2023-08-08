@@ -57,7 +57,7 @@ pipeline {
                     sh 'git checkout argocd'
                     sh 'git pull origin argocd'
                     
-                    sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/reca1team-ecr::|backend-v[0-9]+(\.[0-9]+)*)~image: public.ecr.aws/i9j0a8l3/reca1team-ecr::$BUILD_NUMBER~" argo/tomcat.yaml'
+                    sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/reca1team-ecr::|backend-v[0-9]+(\.[0-9]+)*)~image: public.ecr.aws/i9j0a8l3/reca1team-ecr::$BUILD_NUMBER~" argo/infra.yaml'
                     sh 'git add argo/tomcat.yaml'
                     sh 'git commit -m "Update image in tomcat.yaml"'
                     sh 'git push origin argocd'
