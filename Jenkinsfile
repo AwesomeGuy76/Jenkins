@@ -36,7 +36,7 @@ pipeline {
                 sh 'echo "ENTRYPOINT ["java","-jar","/app.jar"]" >> dockerfile'
                 sh 'echo "EXPOSE 8080" >> dockerfile'
                 
-                sh 'docker build -t public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER'
+                sh 'docker build -t public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER .'
             }
         }
 
