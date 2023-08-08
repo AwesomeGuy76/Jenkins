@@ -55,21 +55,12 @@ pipeline {
                 sh 'git config --global user.name "sjh7711"'
 
                 withCredentials([gitUsernamePassword(credentialsId: 'github-sjh', gitToolName: 'Default')]) {
-                    sh 'git checkout tmp'
-                    sh 'git branch -a'
-                    sh 'git status'
+                    sh 'git checkout -b argocd'
                     
                     sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:[0-9]*~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml'
-                    sh 'git status'
                     sh 'git add argo/tomcat.yaml'
-                    sh 'git status'
                     sh 'git commit -m "Update image in tomcat.yaml"'
-                    sh 'git status'
                     sh 'git push origin tmp'
-                    sh 'git status'
-                    sh 'git checkout main'
-                    sh 'git merge tmp'
-                    sh 'git push origin main'
                 }
             }
         }
