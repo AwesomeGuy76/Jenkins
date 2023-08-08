@@ -42,9 +42,7 @@ pipeline {
 
         stage('Image push to ECR') {
             steps {
-                sh 'docker.withRegistry("https://public.ecr.aws/i9j0a8l3/reca1team-ecr", "ecr:ap-northeast-2:671d16ba-e688-4863-9690-12fa05b9b9d6") {\
-                    docker push public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER\
-                }'
+                sh 'docker.withRegistry("https://public.ecr.aws/i9j0a8l3/reca1team-ecr", "ecr:ap-northeast-2:671d16ba-e688-4863-9690-12fa05b9b9d6") {docker push public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER}'
             }
         }
         
