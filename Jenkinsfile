@@ -59,7 +59,7 @@ pipeline {
                     sh 'git branch -a'
                     sh 'git status'
                     
-                    sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:latest~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml'
+                    sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:[0-9]*~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml'
                     sh 'git status'
                     sh 'git add argo/tomcat.yaml'
                     sh 'git status'
