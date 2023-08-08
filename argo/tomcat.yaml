@@ -17,7 +17,7 @@ spec:
         app: tomcat
     spec:
       containers:
-      - image: public.ecr.aws/i9j0a8l3/web:98
+      - image: public.ecr.aws/i9j0a8l3/web:108
         name: tomcat
         ports:
           - containerPort: 8080
