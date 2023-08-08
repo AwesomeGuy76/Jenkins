@@ -55,7 +55,7 @@ pipeline {
 
                 withCredentials([gitUsernamePassword(credentialsId: 'github-sjh', gitToolName: 'Default')]) {
                     sh 'git checkout argocd'
-                    sh 'git pull origin argocd'
+					sh 'git pull origin argocd'
                     
                     sh 'sed -i "s~image: public.ecr.aws/i9j0a8l3/web:[0-9]*~image: public.ecr.aws/i9j0a8l3/web:$BUILD_NUMBER~" argo/tomcat.yaml'
                     sh 'git add argo/tomcat.yaml'
