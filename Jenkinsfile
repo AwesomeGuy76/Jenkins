@@ -44,7 +44,7 @@ pipeline {
             }
         }
         
-        stage('Update Menifest ArgoCD') {
+        stage('Update Manifest ArgoCD') {
             steps {
                 sh 'git config --global user.email "apfhd159862@naver.com"'
                 sh 'git config --global user.name "sjh7711"'
