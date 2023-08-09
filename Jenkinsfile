@@ -38,6 +38,7 @@ pipeline {
 
         stage('Image push to ECR') {
             steps {
+                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i9j0a8l3'
                 sh 'docker build -t public.ecr.aws/i9j0a8l3/reca1team-ecr:$BUILD_NUMBER .'
                 sh 'docker push public.ecr.aws/i9j0a8l3/reca1team-ecr:$BUILD_NUMBER'
             }
