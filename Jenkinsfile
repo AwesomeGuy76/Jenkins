@@ -14,12 +14,6 @@ pipeline {
             }
         }
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Spring Boot Build') {
             steps {
                 sh 'chmod +x gradlew'
