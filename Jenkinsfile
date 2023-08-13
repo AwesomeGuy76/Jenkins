@@ -14,14 +14,6 @@ pipeline {
             }
         }
 
-        stage('Spring Boot Build') {
-            steps {
-                sh 'chmod +x gradlew'
-                sh './gradlew clean build --exclude-task test'
-            }
-        }
-
-
         stage('Build Docker Image') {
             steps {
                 sh 'echo "FROM node:18" > dockerfile' 
