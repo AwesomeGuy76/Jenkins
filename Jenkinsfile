@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         gradle 'gradle8.2.1'
-        jdk 'jdk17'
+        nodejs 'nodejs'
     }
 
     stages {
@@ -24,15 +24,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'ls -al ./build/libs'
-                sh 'echo "FROM openjdk:17-oracle" > dockerfile'
-                sh 'echo "RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime" >> dockerfile'
-                sh 'echo "COPY ./build/libs/board-0.0.1-SNAPSHOT.jar app.jar" >> dockerfile'
+                sh 'echo "FROM node:18" > dockerfile' 
+                sh 'echo "WORKDIR /root/web-1" >> dockerfile' 
+                sh 'echo "COPY ./ ./" >> dockerfile'
+                sh 'echo "RUN npm install" >> dockerfile'
                 sh '''
-                echo 'ENTRYPOINT ["java","-jar","app.jar"]' >> dockerfile
+                echo 'ENTRYPOINT ["node","server.js"]' >> dockerfile
                 '''
-                sh 'echo "EXPOSE 8080" >> dockerfile'
-                sh 'cat dockerfile'
+                sh 'echo "EXPOSE 8888" >> dockerfile'
             }
         }
 
