@@ -10,6 +10,7 @@ spec:
     app: web-server
   ports:
   - port: 80
+    nodePort: 30080
     targetPort: 80
 ---
 apiVersion: apps/v1
@@ -59,8 +60,9 @@ spec:
   selector:
     app: was-server
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 8888
+    nodePort: 30888
+    targetPort: 8888
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -81,7 +83,7 @@ spec:
         image: public.ecr.aws/i9j0a8l3/reca1team-ecr:174
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8888
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
