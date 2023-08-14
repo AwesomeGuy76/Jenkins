@@ -79,7 +79,7 @@ spec:
     spec:
       containers:
       - name: reca1team-was-server
-        image: public.ecr.aws/i9j0a8l3/reca1team-ecr:181
+        image: public.ecr.aws/i9j0a8l3/reca1team-ecr:182
         imagePullPolicy: Always
         ports:
         - containerPort: 8888
