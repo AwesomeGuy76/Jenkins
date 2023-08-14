@@ -25,7 +25,7 @@ metadata:
   name: web-server
   namespace: prd
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: web-server
@@ -41,8 +41,6 @@ spec:
           ports:
             - containerPort: 80
           resources:
-            limits:
-              cpu: 200m
             requests:
               cpu: 200m
 ---
@@ -83,7 +81,7 @@ metadata:
   name: was-server
   namespace: prd
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: was-server
@@ -99,8 +97,6 @@ spec:
         ports:
         - containerPort: 8888
         resources:
-          limits:
-            cpu: 200m
           requests:
             cpu: 200m
 ---
