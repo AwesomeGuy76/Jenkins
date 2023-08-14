@@ -125,7 +125,7 @@ legend {
   height: 45px;
   font-size: 16px;
   color: #ffffff;
-  background: #0014BA;
+  background: #e50914;
   border: 0;
   border-radius: 4px;
   margin-top: 30px;
@@ -133,7 +133,7 @@ legend {
 }
 
 .signUp-bt:hover {
-  background: #0014BA;
+  background: #ff4500;
   text-decoration: underline;
 }
 
@@ -164,7 +164,7 @@ legend {
   display: none;
   margin-top: 15px;
   text-indent: 12px;
-  color: rgb(68, 0, 255);
+  color: red;
   font-size: 12px;
 }
 .guideMessageActive{
