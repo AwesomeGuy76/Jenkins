@@ -40,6 +40,11 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          resources:
+            limits:
+              cpu: 200m
+            requests:
+              cpu: 200m
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -93,6 +98,11 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8888
+        resources:
+          limits:
+            cpu: 200m
+          requests:
+            cpu: 200m
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
