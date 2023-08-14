@@ -36,9 +36,9 @@ spec:
             - containerPort: 80
           resources:
             limits:
-              cpu: 400m
+              cpu: 150m
             requests:
-              cpu: 200m
+              cpu: 150m
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -93,9 +93,9 @@ spec:
         - containerPort: 8888
         resources:
           limits:
-            cpu: 400m
+            cpu: 150m
           requests:
-            cpu: 200m
+            cpu: 150m
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
