@@ -35,6 +35,8 @@ spec:
           ports:
             - containerPort: 80
           resources:
+            limits:
+              cpu: 400m
             requests:
               cpu: 200m
 ---
@@ -90,6 +92,8 @@ spec:
         ports:
         - containerPort: 8888
         resources:
+          limits:
+            cpu: 400m
           requests:
             cpu: 200m
 ---
