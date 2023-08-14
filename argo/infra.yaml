@@ -1,7 +1,8 @@
-apiVersion: v1
+ apiVersion: v1
 kind: Service
 metadata:
   name: reca1team-web-server
+  namespace: frontend 
   labels:
     app: web-server
 spec:
@@ -16,6 +17,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server
+  namespace: frontend
 spec:
   replicas: 2
   selector:
@@ -52,6 +54,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: reca1team-was-server
+  namespace: backend
   labels:
     app: was-server
 spec:
@@ -66,6 +69,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: was-server
+  namespace: backend
 spec:
   replicas: 2
   selector:
