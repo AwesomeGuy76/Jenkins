@@ -39,6 +39,7 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: reca1team-web-server-hpa
+  namespace: frontend
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -91,7 +92,7 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: reca1team-was-server-hpa
-  namespace: default
+  namespace: backend
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
