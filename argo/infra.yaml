@@ -56,9 +56,9 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: web-server
-  minReplicas: 2
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 40
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 20
 
 
 ---
@@ -114,6 +114,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: was-server
-  minReplicas: 2
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 40
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 20
