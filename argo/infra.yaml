@@ -1,7 +1,13 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: prd
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: reca1team-web-server
+  namespace: prd
   labels:
     app: web-server
 spec:
@@ -17,6 +23,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server
+  namespace: prd
 spec:
   replicas: 2
   selector:
@@ -38,6 +45,7 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: reca1team-web-server-hpa
+  namespace: prd
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -53,6 +61,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: reca1team-was-server
+  namespace: prd
   labels:
     app: was-server
 spec:
@@ -67,6 +76,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: was-server
+  namespace: prd
 spec:
   replicas: 2
   selector:
@@ -88,7 +98,7 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: reca1team-was-server-hpa
-  namespace: default
+  namespace: prd
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
