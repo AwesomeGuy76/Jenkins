@@ -43,7 +43,7 @@ body {
 }
 
 .header__nav li:first-child i {
-  color: crimson;
+  color: rgb(68, 0, 255);
   font-size: 20px;
 }
 
@@ -58,8 +58,8 @@ a.logout-btn {
 }
 
 a.logout-btn:hover {
-  background-color: crimson;
-  border: 2px solid crimson;
+  background-color: rgb(68, 0, 255);
+  border: 2px solid rgb(68, 0, 255);
 }
 
 /* popup-UI */
@@ -143,7 +143,7 @@ h3.popup__movieName {
 
 .liked {
   cursor: pointer;
-  color: crimson;
+  color: red;
 }
 
 .heartPopup {
@@ -241,8 +241,8 @@ h3.popup__open__overviewTag {
 }
 
 .more-btn:hover {
-  background-color: crimson;
-  border: 2px solid crimson;
+  background-color: rgb(68, 0, 255);
+  border: 2px solid rgb(68, 0, 255);
 }
 
 .top-btn {
@@ -299,8 +299,8 @@ h3.popup__open__overviewTag {
 }
 
 .search-btn:hover {
-  background-color: crimson;
-  border: 2px solid crimson;
+  background-color: rgb(68, 0, 255);
+  border: 2px solid rgb(68, 0, 255);
 }
 
 .search-btn>span {

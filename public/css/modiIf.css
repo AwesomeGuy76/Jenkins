@@ -138,7 +138,7 @@ legend {
 
 .alert {
   text-indent: 12px;
-  color: red;
+  color: rgb(68, 0, 255);
   font-size: 12px;
 }
 
@@ -148,7 +148,7 @@ legend {
   height: 45px;
   font-size: 16px;
   color: #ffffff;
-  background: #e50914;
+  background: #0014BA;
   border: 0;
   border-radius: 4px;
   margin-top: 16px;
@@ -156,7 +156,7 @@ legend {
 }
 
 .modiIf-bt:hover {
-  background: #ff4500;
+  background: #0014BA;
   text-decoration: underline;
 }
 
