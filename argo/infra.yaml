@@ -20,6 +20,7 @@ metadata:
   name: web-server
   namespace: prd
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: web-server
@@ -77,6 +78,7 @@ metadata:
   name: was-server
   namespace: prd
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: was-server
